@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Welcome to MeloMood</title>
 </head>
 <body>
-$END$
+  <h1>Recent Played Tracks</h1>
+  <ul>
+      {%for track in tracks%}
+       <li> {{ track.name }} by {{ track.artist }} ({{ track.date}})</li>
+      {%endfor%}
+  </ul>
+
 </body>
 </html>
