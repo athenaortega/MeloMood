@@ -2,12 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to MeloMood!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UwU Cat Facts & Playlist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style-theme.css') }}">
 </head>
 <body>
-    <h1> Hi there. Get ready to reflect on your inner melodies.</h1>
-    <p> Please log in with Spotify: </p>
-    <a href="{{ url_for('login') }}">Log in with Spotify</a>
+    <h1>UwU Cat Facts</h1>
+    <h2>Get your daily dose of cat knowledge!</h2>
 
+    <ul>
+        {% for fact in cat_facts %}
+            <li>{{ fact }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Based on a new cat fact you learned, search
+    for a Spotify Playlist with a new keyword!</h2>
+    <form method="POST">
+        <label for="playlist">Enter Playlist Keyword:</label>
+        <input type="text" id="playlist" name="playlist" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if playlist_embed_url %}
+        <h3>Enjoy your playlist!</h3>
+        <iframe src="{{ playlist_embed_url }}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    {% endif %}
+
+    <footer>
+        <p class="heart">♡ Made with love and a bit of cuteness! ♡</p>
+    </footer>
 </body>
 </html>
